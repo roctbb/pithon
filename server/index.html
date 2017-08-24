@@ -40,10 +40,29 @@
 
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a class="navbar-brand" href="#"><img src="/images/pithon-horisontal-logo.png"</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+            aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Онлайн компилятор <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Документация</a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-md-8 mr-auto ml-auto">
-            <h1 style="text-align: center; margin-top: 30px;">Secret language</h1>
             <form method="POST" style="margin-top: 30px;">
                 <textarea id="area" name="code" style="display: none;">{{code}}</textarea>
                 <div class="ace_editor" id="editor"></div>
@@ -85,13 +104,13 @@
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
 <script>
-            var editor = ace.edit("editor");
-            var textarea = $('#area').hide();
-            editor.getSession().setValue(textarea.val());
-            editor.getSession().on('change', function () {
-                textarea.val(editor.getSession().getValue());
-            });
-    </script>
+    var editor = ace.edit("editor");
+    var textarea = $('#area').hide();
+    editor.getSession().setValue(textarea.val());
+    editor.getSession().on('change', function () {
+        textarea.val(editor.getSession().getValue());
+    });
+</script>
 
 </body>
 </html>
