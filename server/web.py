@@ -29,8 +29,8 @@ class DocumentationHendler(tornado.web.RequestHandler):
 routes = [
     (r"/", MainHandler),
     (r"/documentation", DocumentationHendler),
-    ('/images/(.*)', tornado.web.StaticFileHandler, {'path': 'images'}),
-    ('/src-min-noconflict/(.*)', tornado.web.StaticFileHandler, {'path': 'src-min-noconflict'}),
+    (r'/images/(.*)', tornado.web.StaticFileHandler, {'path': 'images'}),
+    (r'/src-min-noconflict/(.*)', tornado.web.StaticFileHandler, {'path': 'src-min-noconflict'}),
 ]
 
 app = tornado.web.Application(routes, debug=True)
