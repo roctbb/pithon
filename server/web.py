@@ -3,6 +3,7 @@ import tornado.web
 import importlib as imp
 import sys
 import os
+import markdown2
 
 sys.path.append("../compiler")
 module = __import__('interpreter', fromlist=["make_choice"])
@@ -21,7 +22,9 @@ class MainHandler(tornado.web.RequestHandler):
 
 class DocumentationHendler(tornado.web.RequestHandler):
     def get(self):
-        self.render('documentation.html', result="", code="", data="")
+        with open('../README.md') as docs:
+            html = markdown2.markdown(docs.read(), extras=["fenced-code-blocks", "break-on-newline", "tables"])
+        self.render('documentation.html', html=html)
 
 routes = [
     (r"/", MainHandler),
