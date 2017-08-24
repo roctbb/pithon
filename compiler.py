@@ -41,7 +41,6 @@ for command in replace_dict:
 
 if mode == "compile":
     code.replace('поплавок', '')
-    print(code)
     exec(code)
 if mode == "decompile":
     print(code)

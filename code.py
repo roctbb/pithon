@@ -1,11 +1,14 @@
-print('Walk Adviser v0.1 by RoctBB')
-print("Добро пожаловать!")
-temperature = int(input('Сколько там градусов? '))
-is_raining = input('Идет дождь (да/нет)? ').lower()
+import random
+for i in range(10):
+    print(i)
+print("10...Лотерея!!!")
 
-if is_raining == "нет" and temperature >= 20:
-    print("Иди гуляй, че как сыч сидишь!")
-elif is_raining == "нет" or temperature >= 23:
-    print("Ну вообще и прогуляться можно...")
-else:
-    print("Го в КС, я создал!")
+prizes = ["А-а-а-втомобиль!", "Банка с огурцами", "Орущая кошка, покормите ее уже!",
+          "Чирик", "Путевка в Крым, но кажется далеко от моря", "Вьетнамские флешбэк"]
+
+people = ["Дед Макар", "Путин", "Шмель", "Твоя собака"]
+
+for participant in people:
+    prize = random.choice(prizes)
+    print("{0} получает лот '{1}'! Поздравляем!"
+          .format(participant, prize))
