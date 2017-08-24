@@ -27,13 +27,12 @@ def run(code, data, core_path = "pithon.core"):
         filename = "tmp/"+str(uuid.uuid4())+".py"
         with open(filename, 'w') as tfile:
             tfile.write(code)
-        print(123)
         process = subprocess.Popen(['python3', filename], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         process.stdin.write(data.encode('utf-8'))
         process.stdin.close()
         process.wait()
-        return str(process.stdout.read().decode('utf-8'))
+        return process.stdout.read().decode('utf-8')
     except Exception as e:
         return str(e)
 
