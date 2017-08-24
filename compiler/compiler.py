@@ -40,7 +40,7 @@ for command in replace_dict:
     code = code.replace(command, replace_dict[command])
 
 if mode == "compile":
-    code.replace('поплавок', '')
+    code = code.replace('поплавок ', '')
     exec(code)
 if mode == "decompile":
     print(code)

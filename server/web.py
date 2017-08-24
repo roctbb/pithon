@@ -4,7 +4,7 @@ import importlib as imp
 import sys
 import os
 
-sys.path.append(os.path.dirname(__file__) + "../compiler")
+sys.path.append("../compiler")
 module = __import__('interpreter', fromlist=["make_choice"])
 run = getattr(module, "run")
 

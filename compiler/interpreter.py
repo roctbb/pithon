@@ -23,15 +23,18 @@ def run(code, data, core_path = "pithon.core"):
         for command in replace_dict:
             code = code.replace(command, replace_dict[command])
 
-        code.replace('поплавок', '')
+        code = code.replace('поплавок ', '')
         filename = "tmp/"+str(uuid.uuid4())+".py"
         with open(filename, 'w') as tfile:
             tfile.write(code)
-        process = subprocess.Popen(['python3', filename], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        process = subprocess.Popen(['python3', filename], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         process.stdin.write(data.encode('utf-8'))
         process.stdin.close()
         process.wait()
+        errors = process.stderr.read().decode('utf-8')
+        if len(errors)>0:
+            return errors
         return process.stdout.read().decode('utf-8')
     except Exception as e:
         return str(e)
