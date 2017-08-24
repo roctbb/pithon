@@ -4,7 +4,7 @@ import importlib as imp
 import sys
 import os
 
-sys.path.append(os.path.dirname(__file__) + "/../compiler")
+sys.path.append(os.path.dirname(__file__) + "../compiler")
 module = __import__('interpreter', fromlist=["make_choice"])
 run = getattr(module, "run")
 
@@ -19,8 +19,13 @@ class MainHandler(tornado.web.RequestHandler):
         self.render('index.html', result=result, code=code, data=data)
 
 
+class DocumentationHendler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('documentation.html', result="", code="", data="")
+
 routes = [
     (r"/", MainHandler),
+    (r"/documentation", DocumentationHendler),
     ('/images/(.*)', tornado.web.StaticFileHandler, {'path': 'images'}),
     ('/src-min-noconflict/(.*)', tornado.web.StaticFileHandler, {'path': 'src-min-noconflict'}),
 ]
