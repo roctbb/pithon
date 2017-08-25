@@ -21,6 +21,10 @@ def run(code, data, core_path = "pithon.core"):
             replace_dict[words[1]] = words[0]
 
         for command in replace_dict:
+            if code.find(replace_dict[command]) != -1:
+                return "Неизвестная команда {0}".format(replace_dict[command]) 
+
+        for command in replace_dict:
             code = code.replace(command, replace_dict[command])
 
         code = code.replace('поплавок ', '')
