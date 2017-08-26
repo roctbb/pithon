@@ -35,7 +35,7 @@ def run(code, data, core_path = "pithon.core"):
 
         process.stdin.write(data.encode('utf-8'))
         process.stdin.close()
-        process.wait()
+        process.wait(timeout=3)
         errors = process.stderr.read().decode('utf-8')
         if len(errors)>0:
             return errors
