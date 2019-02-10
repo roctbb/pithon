@@ -22,9 +22,12 @@ def run(code, data, core_path = "pithon.core"):
             replace_dict[words[1]] = words[0]
 
         for module in modules:
-            code = code.replace(module, '')
-        code = code.replace('eval', '')
-        code = code.replace('exec', '')
+            while module in code:
+                code = code.replace(module, '')
+        while 'exec' in code:
+            code = code.replace('eval', '')
+        while 'eval' in code:
+            code = code.replace('exec', '')
 
         for command in replace_dict:
             if code.find(replace_dict[command]) != -1:
