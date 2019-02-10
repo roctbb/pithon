@@ -23,7 +23,7 @@ def run(code, data, core_path = "pithon.core"):
 
         for module in modules:
             while module in code:
-                code = code.replace(module, '')
+                code = code.replace(" "+module, '')
         while 'exec' in code:
             code = code.replace('exec', '')
         while 'eval' in code:
