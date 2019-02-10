@@ -21,6 +21,11 @@ def run(code, data, core_path = "pithon.core"):
             words = line.split('$')
             replace_dict[words[1]] = words[0]
 
+        for module in modules:
+            code = code.replace(module, '')
+        code = code.replace('eval', '')
+        code = code.replace('exec', '')
+
         for command in replace_dict:
             if code.find(replace_dict[command]) != -1:
                 return "Неизвестная команда {0}".format(replace_dict[command]) 
@@ -29,11 +34,6 @@ def run(code, data, core_path = "pithon.core"):
 
         for command in replace_dict:
             code = code.replace(command, replace_dict[command])
-
-        for module in modules:
-            code = code.replace(module, '')
-        code = code.replace('eval', '')
-        code = code.replace('exec', '')
 
         code = code.replace('поплавок ', '')
         filename = "tmp/"+str(uuid.uuid4())+".py"
