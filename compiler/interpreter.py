@@ -25,9 +25,9 @@ def run(code, data, core_path = "pithon.core"):
             while module in code:
                 code = code.replace(module, '')
         while 'exec' in code:
-            code = code.replace('eval', '')
-        while 'eval' in code:
             code = code.replace('exec', '')
+        while 'eval' in code:
+            code = code.replace('eval', '')
 
         for command in replace_dict:
             if code.find(replace_dict[command]) != -1:
