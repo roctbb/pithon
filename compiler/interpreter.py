@@ -21,9 +21,14 @@ def run(code, data, core_path = "pithon.core"):
             words = line.split('$')
             replace_dict[words[1]] = words[0]
 
-        for module in modules:
-            while ' '+module in code:
-                code = code.replace(" "+module, '')
+        module = 0
+        while module < len(modules) - 1:
+            if ' ' + modules[module] in code:
+                while ' ' + modules[module] in code:
+                    code = code.replace(" " + modules[module], '')
+                module = 0
+            else:
+                module += 1
         while 'exec' in code:
             code = code.replace('exec', '')
         while 'eval' in code:
