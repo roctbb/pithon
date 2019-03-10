@@ -29,6 +29,8 @@ def run(code, data, core_path = "pithon.core"):
                 module = 0
             else:
                 module += 1
+        while '__import__' in code:
+            code = code.replace('__import__', '')
         while 'exec' in code:
             code = code.replace('exec', '')
         while 'eval' in code:
